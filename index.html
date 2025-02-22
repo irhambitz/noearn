@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Clicker Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <!-- Balance / Jumlah Koin -->
+    <div id="balance">0</div>
+    <div id="bitcoin">bitcoin</div>
+
+    <!-- Bitcoin Klik -->
+    <div id="coin"></div>
+
+    <!-- Sisa Klik -->
+    <div id="clicks-left">2,000/3</div>
+
+    <!-- Tombol Upgrade -->
+    <button id="upgrade">Upgrade</button>
+
+    <!-- Menu Navigasi -->
+    <div class="menu-bar">
+        <div id="home" class="menu-item active" onclick="switchMenu('home')">
+            <img src="assets/home.png" class="active-icon">
+            <img src="assets/home_gray.png" class="inactive-icon">
+            <span>Home</span>
+        </div>
+        <div id="friends" class="menu-item" onclick="switchMenu('friends')">
+            <img src="assets/friends.png" class="active-icon">
+            <img src="assets/friends_gray.png" class="inactive-icon">
+            <span>Friends</span>
+        </div>
+    </div>
+
+</body>
+</html>

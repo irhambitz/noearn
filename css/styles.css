@@ -1,0 +1,105 @@
+/* Reset Style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    user-select: none;
+}
+
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+/* Balance & Bitcoin */
+#balance {
+    font-size: 64px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#bitcoin {
+    font-style: italic;
+    font-size: 24px;
+    color: gray;
+}
+
+/* Coin */
+#coin {
+    width: 150px;
+    height: 150px;
+    background-image: url('../assets/bitcoin.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Sisa Klik */
+#clicks-left {
+    font-size: 18px;
+    color: lightgray;
+}
+
+/* Upgrade Button */
+#upgrade {
+    background-color: orange;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Menu Bar */
+.menu-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #858585;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 10px 15px;
+    position: relative;
+}
+
+.menu-item img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 5px;
+}
+
+/* Aktif & Nonaktif */
+.menu-item .active-icon { display: block; }
+.menu-item .inactive-icon { display: none; }
+.menu-item.active .active-icon { display: block; }
+.menu-item.active .inactive-icon { display: none; }
+.menu-item:not(.active) .active-icon { display: none; }
+.menu-item:not(.active) .inactive-icon { display: block; }
