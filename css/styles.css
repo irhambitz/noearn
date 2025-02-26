@@ -1,105 +1,596 @@
-/* Reset Style */
+/* Reset default untuk menghilangkan margin dan padding bawaan browser */
 * {
     margin: 0;
+    /* Hapus margin default */
     padding: 0;
+    /* Hapus padding default */
     box-sizing: border-box;
+    /* Pastikan padding dan border termasuk dalam ukuran elemen */
     font-family: 'Arial', sans-serif;
+    /* Gunakan font Arial sebagai default */
     user-select: none;
+    /* Cegah pengguna memilih teks */
 }
 
+/* Style utama untuk seluruh halaman */
 body {
     background-color: black;
+    /* Latar belakang hitam */
     color: white;
+    /* Warna teks putih */
     text-align: center;
+    /* Pusatkan teks secara horizontal */
     height: 100vh;
+    /* Tinggi penuh viewport */
     display: flex;
+    /* Gunakan flexbox untuk layout */
     flex-direction: column;
+    /* Susun elemen secara vertikal */
     align-items: center;
+    /* Pusatkan elemen secara horizontal */
     justify-content: space-between;
+    /* Berikan ruang antara elemen */
     overflow: hidden;
+    /* Cegah scroll */
+    width: 100%;
+    /* Pastikan lebar penuh */
+    margin: 0;
+    /* Hapus margin bawaan */
+    padding: 0;
+    /* Hapus padding bawaan */
 }
 
-/* Balance & Bitcoin */
-#balance {
-    font-size: 64px;
+/* Style untuk semua konten (Home, Friends, Miner) */
+.content {
+    font-size: 32px;
+    /* Ukuran font default untuk konten */
     font-weight: bold;
-    margin-top: 20px;
+    /* Tebal untuk konten utama */
+    position: absolute;
+    /* Posisi absolut agar tumpuk di layer yang sama */
+    top: 0;
+    /* Mulai dari atas */
+    left: 0;
+    /* Mulai dari kiri */
+    width: 100%;
+    /* Lebar penuh */
+    height: 100%;
+    /* Tinggi penuh */
+    display: flex;
+    /* Gunakan flexbox untuk memusatkan anak */
+    flex-direction: column;
+    /* Susun anak secara vertikal */
+    align-items: center;
+    /* Pusatkan anak secara horizontal */
+    justify-content: center;
+    /* Pusatkan anak secara vertikal */
 }
 
-#bitcoin {
-    font-style: italic;
-    font-size: 24px;
-    color: gray;
+/* Kelas untuk menyembunyikan elemen */
+.hidden {
+    display: none !important;
+    /* Sembunyikan elemen dengan prioritas tinggi */
 }
 
-/* Coin */
-#coin {
-    width: 150px;
-    height: 150px;
-    background-image: url('../assets/bitcoin.png');
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-    cursor: pointer;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-/* Sisa Klik */
-#clicks-left {
-    font-size: 18px;
-    color: lightgray;
-}
-
-/* Upgrade Button */
-#upgrade {
-    background-color: orange;
-    color: black;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-/* Menu Bar */
+/* Style untuk menu bar di bagian bawah */
 .menu-bar {
     position: fixed;
+    /* Tetap di posisi bawah */
     bottom: 0;
+    /* Posisi di bagian bawah */
     width: 100%;
+    /* Lebar penuh */
     display: flex;
+    /* Gunakan flexbox untuk tombol */
     justify-content: space-around;
+    /* Berikan ruang merata antar tombol */
     background-color: black;
+    /* Latar belakang hitam */
     padding: 10px 0;
-    z-index: 10;
+    /* Padding vertikal 10px */
+    z-index: 9999;
+    /* Pastikan di atas konten lain */
 }
 
+/* Style untuk setiap item menu */
 .menu-item {
+    display: flex;
+    /* Gunakan flexbox untuk ikon dan teks */
+    flex-direction: column;
+    /* Susun vertikal */
+    align-items: center;
+    /* Pusatkan secara horizontal */
+    font-size: 14px;
+    /* Ukuran font kecil */
+    color: #858585;
+    /* Warna abu-abu untuk teks tidak aktif */
+    cursor: pointer;
+    /* Kursor tangan saat hover */
+    padding: 10px 15px;
+    /* Padding vertikal dan horizontal */
+    position: relative;
+    /* Untuk positioning ikon */
+}
+
+/* Style untuk ikon di menu */
+.menu-item img {
+    width: 20px;
+    /* Lebar ikon */
+    height: 20px;
+    /* Tinggi ikon */
+    margin-bottom: 5px;
+    /* Jarak ke teks di bawah */
+}
+
+/* Tampilkan ikon aktif saat menu dipilih */
+.menu-item.active .active-icon {
+    display: block;
+    /* Tampilkan ikon berwarna */
+}
+
+/* Sembunyikan ikon tidak aktif saat menu dipilih */
+.menu-item.active .inactive-icon {
+    display: none;
+    /* Sembunyikan ikon abu-abu */
+}
+
+/* Sembunyikan ikon aktif saat menu tidak dipilih */
+.menu-item:not(.active) .active-icon {
+    display: none;
+    /* Sembunyikan ikon berwarna */
+}
+
+/* Tampilkan ikon tidak aktif saat menu tidak dipilih */
+.menu-item:not(.active) .inactive-icon {
+    display: block;
+    /* Tampilkan ikon abu-abu */
+}
+
+/* Style teks menu saat aktif */
+.menu-item.active span {
+    color: #FFFFFF;
+    /* Warna putih saat aktif */
+}
+
+/* Style teks menu saat tidak aktif */
+.menu-item:not(.active) span {
+    color: #858585;
+    /* Warna abu-abu saat tidak aktif */
+}
+
+/* Style untuk konten Home */
+#home-content {
+    padding: 0 20px;
+    /* Padding samping untuk ruang */
+}
+
+/* Style untuk balance di Home */
+#home-content .balance {
+    margin-top: 20px;
+    /* Jarak dari atas */
+    font-size: 8vh;
+    /* Ukuran besar untuk menonjol */
+    font-family: 'Arial', sans-serif;
+    /* Font Arial */
+    font-weight: bold;
+    /* Tebal */
+    color: #ff9900;
+    /* Warna oranye asli */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* Bayangan untuk kedalaman */
+    letter-spacing: 1px;
+    /* Jarak antar huruf */
+}
+
+/* Style untuk rectangle (container kampanye) di Home */
+#home-content .rectangle {
+    width: 350px;
+    /* Lebar kotak */
+    height: 200px;
+    /* Tinggi kotak */
+    background: linear-gradient(135deg, #4f4f4f 0%, #3a3a3a 100%);
+    /* Gradient abu-abu */
+    border-radius: 15px;
+    /* Sudut melengkung */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    /* Bayangan untuk efek 3D */
+    padding: 20px;
+    /* Ruang dalam */
+    display: flex;
+    /* Flexbox untuk anak */
+    flex-direction: column;
+    /* Susun vertikal */
+    align-items: center;
+    /* Pusatkan horizontal */
+    justify-content: space-between;
+    /* Ruang merata antar anak */
+    margin-top: 30px;
+    /* Jarak dari balance */
+}
+
+/* Style untuk judul kampanye di Home */
+#home-content .campaign-title {
+    font-size: 24px;
+    /* Ukuran font sedang */
+    color: #ffffff;
+    /* Warna putih */
+    font-weight: 600;
+    /* Tebal sedang */
+    text-transform: uppercase;
+    /* Huruf besar semua */
+    letter-spacing: 1.5px;
+    /* Jarak antar huruf */
+}
+
+/* Style untuk teks "Remaining Ads" di Home */
+#home-content .rectangle-text {
+    font-size: 14px;
+    /* Ukuran kecil */
+    color: #d3d3d3;
+    /* Abu-abu terang */
+    font-weight: 500;
+    /* Sedang tebal */
+    margin-bottom: 5px;
+    /* Jarak ke bawah */
+}
+
+/* Style untuk teks dinamis jumlah iklan */
+#ad-counter {
+    font-size: 20px;
+    /* Ukuran menonjol */
+    color: #00cc00;
+    /* Hijau terang */
+    font-weight: bold;
+    /* Tebal */
+    margin-bottom: 10px;
+    /* Jarak ke bawah */
+}
+
+/* Style saat tidak ada iklan tersisa */
+#home-content .no-ads {
+    color: #ff3333 !important;
+    /* Merah cerah dengan prioritas */
+    font-weight: bold;
+    /* Tebal */
+}
+
+/* Style untuk tombol Watch Ads */
+#watch-ad {
+    background: linear-gradient(90deg, #ff9900, #ff6600);
+    /* Gradient oranye asli */
+    color: #000000;
+    /* Warna teks hitam */
+    font-size: 18px;
+    /* Ukuran font */
+    font-weight: 600;
+    /* Tebal sedang */
+    padding: 10px 20px;
+    /* Padding dalam */
+    border: none;
+    /* Tanpa border */
+    border-radius: 8px;
+    /* Sudut melengkung */
+    cursor: pointer;
+    /* Kursor tangan */
+    text-transform: uppercase;
+    /* Huruf besar */
+    letter-spacing: 1px;
+    /* Jarak antar huruf */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    /* Bayangan kecil */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Animasi saat hover */
+}
+
+/* Efek hover pada tombol Watch Ads */
+#watch-ad:hover {
+    transform: translateY(-2px);
+    /* Naik sedikit */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    /* Bayangan lebih dalam */
+}
+
+#home-content #history-section {
+    margin-top: 20px;
+    /* Jarak dari rectangle */
+    padding: 15px;
+    /* Ruang dalam */
+    background-color: #1a1a1a;
+    /* Latar belakang gelap, sedikit lebih terang dari hitam */
+    border-radius: 10px;
+    /* Sudut melengkung */
+    width: 350px;
+    /* Lebar sama dengan rectangle */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    /* Bayangan ringan */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Jarak antar item */
+}
+
+#home-content .history-text {
+    font-size: 30px;
+    text-align: absolute;
+}
+
+#home-content .history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Menyebarkan ikon, label, dan nilai */
+    padding: 5px 0;
+}
+
+#home-content .history-icon {
+    font-size: 20px;
+    /* Ukuran ikon */
+    color: #858585;
+    /* Abu-abu untuk ikon tidak aktif */
+    width: 20px;
+    /* Lebar ikon */
+    height: 20px;
+    /* Tinggi ikon */
+}
+
+#home-content .history-label {
+    font-size: 16px;
+    color: #ffffff;
+    /* Warna putih asli */
+    font-weight: 500;
+    margin-left: 10px;
+    /* Jarak dari ikon */
+}
+
+#home-content .history-value {
+    font-size: 18px;
+    color: #ff9900;
+    /* Warna oranye asli */
+    font-weight: bold;
+    margin-right: 10px;
+    /* Jarak dari tepi kanan */
+}
+
+/* Style untuk teks Coming Soon di Friends */
+#friends-content .coming-soon {
+    font-size: 32px;
+    /* Ukuran besar */
+    color: blue;
+    /* Warna biru */
+    text-align: center;
+    /* Pusatkan teks */
+    margin: 0;
+    /* Tidak ada margin, flexbox yang mengatur */
+}
+
+/* Style untuk latar belakang Miner */
+#noearn-content {
+    background-color: black;
+    /* Latar belakang hitam */
+    width: 100%;
+    /* Pastikan lebar penuh */
+    height: 100%;
+    /* Pastikan tinggi penuh */
+    overflow: hidden;
+    /* Cegah overflow */
+    position: relative;
+    /* Pastikan elemen anak position: absolute berfungsi */
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 14px;
-    color: #858585;
-    cursor: pointer;
-    transition: color 0.3s;
-    padding: 10px 15px;
+    justify-content: center;
+    padding: 20px;
+    /* Tambahkan padding untuk ruang */
+}
+
+/* Style untuk balance Miner */
+#noearn-content #miner-balance {
+    font-size: 8vh;
+    /* Ukuran sama dengan balance di Home */
+    font-family: 'Arial', sans-serif;
+    /* Font sama dengan balance di Home */
+    font-weight: bold;
+    /* Tebal, konsisten dengan Home */
+    color: white;
+    /* Warna putih, sesuai permintaan */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* Bayangan untuk kedalaman, sama dengan Home */
+    letter-spacing: 1px;
+    /* Jarak antar huruf, sama dengan Home */
+    margin-bottom: 50px;
+}
+
+#noearn-content #click-status .hand-icon {
+    width: 30px;
+    /* Ukuran lebar ikon */
+    height: 30px;
+    /* Ukuran tinggi ikon */
+    vertical-align: middle;
+    /* Posisi vertikal sejajar dengan teks */
+    margin-right: 8px;
+    /* Jarak dari teks */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Style untuk status klik di Miner */
+#noearn-content #click-status {
+    font-size: 25px;
+    /* Ukuran teks lebih besar untuk ikon dan angka */
+    color: #ff9900;
+    /* Warna kuning-oranye keemasan */
+    font-weight: bold;
+    /* Tebal untuk menonjol */
+    margin-bottom: 10px;
+    /* Jarak dari progress bar */
+    text-align: center;
+    /* Pastikan teks di tengah */
+    z-index: 2;
+    /* Pastikan di atas #coin */
+    margin-bottom: 60px;
+}
+
+/* Style untuk container loading bar di Miner */
+#noearn-content #progress-bar-container {
+    width: 90%;
+    max-width: 600px;
+    /* Tingkatkan max-width agar lebih fleksibel di layar besar */
+    height: 15px;
+    /* Tinggi loading bar tetap, sesuai gambar */
+    background-color: #4f4f4f;
+    /* Latar belakang abu-abu gelap, sesuai gambar */
+    border-radius: 8px;
+    /* Sudut melengkung, sesuai gambar */
+    margin-bottom: 50px;
+    /* Jarak ke bawah, konsisten dengan layout */
+    z-index: 2;
+    /* Pastikan di atas #coin */
+}
+
+
+/* Style untuk loading bar progres di Miner */
+#noearn-content #progress-bar {
+    width: 100%;
+    /* Lebar penuh container, fleksibel */
+    height: 100%;
+    /* Penuh tinggi container */
+    background-color: green;
+    /* Warna kuning-oranye keemasan, default */
+    border-radius: 8px;
+    /* Sudut melengkung, sesuai gambar */
+    transition: width 0.3s ease, background-color 0.3s ease;
+    /* Animasi halus untuk perubahan lebar dan warna */
+}
+
+#noearn-content #progress-bar.full {
+    background-color: red;
+    /* Warna hijau, sesuai gambar saat full */
+}
+
+/* Style untuk background bersinar lokal di belakang koin di Miner */
+#noearn-content #shine-background {
     position: relative;
+    width: 349px;
+    /* Pertahankan ukuran koin */
+    height: 349px;
+    /* Pertahankan ukuran koin */
+    border-radius: 50%;
+    /* Buat lingkaran */
+    background: radial-gradient(circle at center, rgba(255, 153, 0, 0.4) 0%, rgba(0, 0, 0, 0) 80%);
+    /* Gradient radial kuning-oranye transparan, melebar lembut */
+    animation: minerGlow 4s infinite ease-in-out;
+    /* Animasi berulang 4 detik */
+    z-index: 1;
+    /* Pastikan di bawah #miner-balance dan #click-status */
 }
 
-.menu-item img {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 5px;
+/* Definisi animasi glowing lokal untuk koin di Miner */
+@keyframes minerGlow {
+    0% {
+        box-shadow: 0 0 10px 5px rgba(255, 153, 0, 0.5);
+        /* Sorotan kecil */
+        background: radial-gradient(circle at center, rgba(255, 153, 0, 0.4) 0%, rgba(0, 0, 0, 0) 80%);
+    }
+
+    50% {
+        box-shadow: 0 0 50px 40px rgba(255, 153, 0, 0.6);
+        /* Sorotan maksimal, luas tetapi lembut */
+        background: radial-gradient(circle at center, rgba(255, 153, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
+    }
+
+    100% {
+        box-shadow: 0 0 10px 5px rgba(255, 153, 0, 0.5);
+        /* Kembali ke kecil */
+        background: radial-gradient(circle at center, rgba(255, 153, 0, 0.4) 0%, rgba(0, 0, 0, 0) 80%);
+    }
 }
 
-/* Aktif & Nonaktif */
-.menu-item .active-icon { display: block; }
-.menu-item .inactive-icon { display: none; }
-.menu-item.active .active-icon { display: block; }
-.menu-item.active .inactive-icon { display: none; }
-.menu-item:not(.active) .active-icon { display: none; }
-.menu-item:not(.active) .inactive-icon { display: block; }
+/* Style untuk koin di Miner */
+#noearn-content #coin {
+    position: absolute;
+    top: 50%;
+    /* Pusatkan vertikal */
+    left: 50%;
+    /* Pusatkan horizontal */
+    transform: translate(-50%, -50%);
+    /* Posisi tepat di tengah */
+    width: 350px;
+    /* Ukuran koin sesuai versi terakhir */
+    height: 350px;
+    /* Ukuran koin sesuai versi terakhir */
+    background-image: url("../assets/bitcoin_coin.png");
+    background-size: cover;
+    /* Penuhi area */
+    background-position: center;
+    /* Pusatkan gambar */
+    border-radius: 50%;
+    /* Pastikan lingkaran */
+    cursor: pointer;
+    /* Kursor tangan */
+    z-index: 0;
+    /* Pastikan di bawah #miner-balance dan #click-status */
+}
+
+/* Efek tambahan bersinar lokal saat koin diklik */
+#noearn-content #shine-background.shine-active {
+    animation: strongMinerGlow 1s ease-out;
+}
+
+/* Definisi animasi bersinar lokal kuat untuk saat diklik */
+@keyframes strongMinerGlow {
+    0% {
+        box-shadow: 0 0 50px 40px rgba(255, 153, 0, 0.8);
+        background: radial-gradient(circle at center, rgba(255, 153, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
+    }
+
+    100% {
+        box-shadow: 0 0 10px 5px rgba(255, 153, 0, 0.5);
+        background: radial-gradient(circle at center, rgba(255, 153, 0, 0.4) 0%, rgba(0, 0, 0, 0) 80%);
+    }
+}
+
+/* Animasi saat koin diklik */
+#noearn-content #coin.clicked {
+    animation: elegantPulse 0.2s ease-in-out;
+    /* Animasi pulse 200ms */
+}
+
+/* Definisi animasi pulse untuk koin */
+@keyframes elegantPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        /* Posisi tengah, ukuran normal, tanpa rotasi */
+        box-shadow: 0 0 0 rgba(255, 153, 0, 0);
+        /* Tanpa bayangan, gunakan kuning-oranye */
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.15) rotate(5deg);
+        /* Membesar dan sedikit berputar */
+        box-shadow: 0 0 10px rgba(255, 153, 0, 0.8);
+        /* Bayangan kuning-oranye */
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        /* Kembali normal */
+        box-shadow: 0 0 0 rgba(255, 153, 0, 0);
+        /* Bayangan hilang */
+    }
+}
+
+/* Style untuk teks mengambang (+1) saat koin diklik */
+.floating-text {
+    position: absolute;
+    /* Posisi absolut berdasarkan klik */
+    font-size: 30px;
+    /* Ukuran font, diperbesar sedikit */
+    font-weight: bold;
+    /* Tebal */
+    color: #ffcc00;
+    /* Warna awal kuning-oranye asli */
+    opacity: 1;
+    /* Awalnya terlihat penuh */
+    transition: transform 1.5s ease-out, opacity 1.5s ease-out, color 1.5s ease-out;
+    /* Animasi 1.5 detik */
+}

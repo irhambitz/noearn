@@ -1,28 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Clicker Game</title>
+    <title>NoEarn</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script.js" defer></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "pub-5249886246065987", // Replace with your AdMob Publisher ID
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
+
 <body>
-    <!-- Balance / Jumlah Koin -->
-    <div id="balance">0</div>
-    <div id="bitcoin">bitcoin</div>
+    <div id="home-content" class="content">
+        <div id="balance" class="balance">0</div>
+        <div class="rectangle">
+            <p class="campaign-title">NO EARN CAMPAIGN</p>
+            <p class="rectangle-text">Remaining Ads:</p>
+            <p id="ad-counter">Loading...</p>
+            <button id="watch-ad">Watch Ad</button>
+        </div>
+        <div id="history-section" class="history">
+            <h2 class="history-text">History</h2>
+            <div class="history-item">
+                <img src="assets/play.png" class="history-icon">
+                <span class="history-label">Ads Watched</span>
+                <span id="ads-watched-count" class="history-value">0</span>
+            </div>
+            <div class="history-item">
+                <img src="assets/friends.png" class="history-icon">
+                <span class="history-label">Invited Friends</span>
+                <span id="friends-invited-count" class="history-value">0</span>
+            </div>
+        </div>
+    </div>
 
-    <!-- Bitcoin Klik -->
-    <div id="coin"></div>
+    <div id="friends-content" class="content hidden">
+        <h1 class="coming-soon">Coming Soon</h1>
+    </div>
 
-    <!-- Sisa Klik -->
-    <div id="clicks-left">2,000/3</div>
+    <div id="noearn-content" class="content hidden">
+        <div id="miner-balance" class="balance">0</div>
+        <div id="shine-background">
+            <div id="coin"></div>
+        </div>
+        <div id="click-status" class="click-info">
+            <img src="assets/tap.png" alt="Hand Pointer" class="hand-icon"><span>210</span>
+        </div>
+        <div id="progress-bar-container">
+            <div id="progress-bar" class="loading-bar"></div>
+        </div>
+        <div id="watch-ad-option" class="watch-ad-option"></div>
+        <button id="daily-challenge-btn" class="game-option">Daily Challenge (Free)</button>
+        <button id="daily-bonus-btn" class="game-option">Daily Bonus (Free)</button>
+        <button id="share-btn" class="game-option">Share Achievement for +10 Clicks</button>
+    </div>
 
-    <!-- Tombol Upgrade -->
-    <button id="upgrade">Upgrade</button>
-
-    <!-- Menu Navigasi -->
     <div class="menu-bar">
+        <div id="noearn" class="menu-item" onclick="switchMenu('noearn')">
+            <img src="assets/bitcoin.png" class="active-icon">
+            <img src="assets/bitcoin_gray.png" class="inactive-icon">
+            <span>Miner</span>
+        </div>
         <div id="home" class="menu-item active" onclick="switchMenu('home')">
             <img src="assets/home.png" class="active-icon">
             <img src="assets/home_gray.png" class="inactive-icon">
@@ -35,5 +79,7 @@
         </div>
     </div>
 
+    <script src="js/script.js"></script>
 </body>
+
 </html>
